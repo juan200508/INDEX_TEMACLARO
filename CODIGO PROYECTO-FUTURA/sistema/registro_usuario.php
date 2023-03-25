@@ -60,23 +60,23 @@ if (!empty($_POST)) {
                         <?php echo isset($alert) ? $alert : ''; ?>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre" id="nombre">
+                            <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre" id="nombre" required>
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo</label>
-                            <input type="email" class="form-control" placeholder="Ingrese Correo Electrónico" name="correo" id="correo">
+                            <input type="email" class="form-control" placeholder="Ingrese Correo Electrónico" name="correo" id="correo" required>
                         </div>
                         <div class="form-group">
                             <label for="correo">Teléfono</label>
-                            <input type="number" class="form-control" placeholder="Ingrese Teléfono" name="telefono" id="telefono">
+                            <input type="text" class="form-control" placeholder="Ingrese Teléfono" name="telefono" id="telefono" required minlength="10" maxlength="10">
                         </div>
                         <div class="form-group">
                             <label for="usuario">Cédula</label>
-                            <input type="text" class="form-control" placeholder="Ingrese su Cédula de Cuidadanía" name="usuario" id="usuario">
+                            <input type="text" class="form-control" placeholder="Ingrese su Cédula de Cuidadanía" name="usuario" id="usuario" required minlength="6" maxlength="12">
                         </div>
                         <div class="form-group">
                             <label for="clave">Contraseña</label>
-                            <input type="password" class="form-control" placeholder="Ingrese Contraseña" name="clave" id="clave">
+                            <input type="password" class="form-control" placeholder="Ingrese Contraseña" name="clave" id="clave" required>
                         </div>
                         <div class="form-group">
                             <label>Rol</label>

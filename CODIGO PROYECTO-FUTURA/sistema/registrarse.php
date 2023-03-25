@@ -59,7 +59,6 @@ if (!empty($_POST)) {
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <!-- Custom styles for this template-->
-    <link href="css/style.violet.css" rel="stylesheet">
 
 </head>
 
@@ -76,7 +75,7 @@ if (!empty($_POST)) {
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image">
-                                <img src="sistema/img/log.png" class="img-thumbnail">
+                            <img src="sistema/img/logo_empresa.png" class="img-thumbnail">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
@@ -87,19 +86,19 @@ if (!empty($_POST)) {
                                         <?php echo isset($alert) ? $alert : ""; ?>
                                         <div class="form-group">
                                             <label for="">Cédula</label>
-                                            <input type="number" class="form-control" placeholder="Ingrese su Cédula de Cuidadanía" name="dni">
+                                            <input type="text" class="form-control" placeholder="Ingrese su Cédula de Cuidadanía" name="dni" required minlength="6" maxlength="12">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Nombre</label>
-                                            <input type="text" class="form-control" placeholder="Ingrese su Nombre" name="nombre">
+                                            <input type="text" class="form-control" placeholder="Ingrese su Nombre" name="nombre" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="">Correo</label>
-                                            <input type="email" class="form-control" placeholder="Ingrese su Correo" name="correo">
+                                            <input type="email" class="form-control" placeholder="Ingrese su Correo" name="correo" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="">Teléfono</label>
-                                            <input type="number" class="form-control" placeholder="Ingrese su Teléfono" name="telefono">
+                                            <input type="text" class="form-control" placeholder="Ingrese su Teléfono" name="telefono" required minlength="10" maxlength="10">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Dirección</label>
@@ -116,14 +115,13 @@ if (!empty($_POST)) {
                                             <input type="number" class="form-control" name="estado" value="1" hidden>
                                         </div>
                                         <input type="submit" value="Guardar Usuario" class="btn btn-primary">
+                                        <a href="../sistema/../index.php"  class="btn btn-primary">Regresar</a>                                    
+
                                         <hr>
                                     </form>
-                                    <a href="index.php" style="padding-right: 60px;">Inicio de Sesión</a>
+                                    <a href="index.php" style="padding-right: 50px;">Inicio de Sesión</a>
                                     <a href="recuperar_pass.php">¿Olvidó su contraseña?</a>
-                                    <hr>
-                                    <hr>
-                                    <a href="../sistema/../../index.php">Regresar</a>
-                                    <hr>
+                                    
                                 </div>
                             </div>
                         </div>

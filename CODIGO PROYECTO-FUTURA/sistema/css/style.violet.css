@@ -388,7 +388,7 @@ i[class*='icon-'] {
 * ==========================================================
 */
 nav.navbar {
-  background: #f8f9fa;
+  background: #e9ecef;
   color: #8a8d93;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -721,7 +721,7 @@ nav.navbar .dropdown .dropdown-menu.active {
 */
 nav#sidebar {
   width: 280px;
-  background: #f8f9fa;
+  background: #e9ecef;
   color: #6a6c70;
   /* border-right: 1px solid #34373d; */
   /* shrinked navbar */
@@ -735,7 +735,7 @@ nav#sidebar a {
 
 
 nav#sidebar a[aria-expanded="true"] {
-  background: #f8f9fa;
+  background: #e9ecef;
 }
 
 
@@ -1855,7 +1855,7 @@ input[type='submit'] {
 
 form label {
   font-size: .9rem;
-  color: #8a8d93;
+  color: #343a40;
 }
 
 .checkbox-template,
@@ -2239,9 +2239,9 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-primary {
-  color: color-yiq(#f03406);
-  background-color: #f03406;
-  border-color: #f03406;
+  color: color-yiq(#007bff);
+  background-color: #007bff;
+  border-color: #17a2b8;
 }
 
 .btn-primary:hover {
@@ -2836,12 +2836,12 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #8a8d93;
-  background-color: #fff;
+  color: #f8f9fa;
+  background-color: #e9ecef;
 }
 
 a {
-  color: #f03406;
+  color: #007bff;
   text-decoration: none;
 }
 
@@ -2929,7 +2929,7 @@ h6,
 }
 
 hr {
-  border-top: 1px solid #6a6c70;
+  /* border-top: 1px solid #6a6c70; */
 }
 
 small,
@@ -3052,7 +3052,8 @@ a.text-primary:focus, a.text-primary:hover {
 * 5. UTILITIES
 */
 .bg-primary {
-  background-color: #f03406 !important;
+  color: white;
+  background-color: #0d6efd !important;
 }
 
 a.bg-primary:focus, a.bg-primary:hover {
@@ -3148,7 +3149,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 }
 
 .text-primary {
-  color: #f03406 !important;
+  color: #0d6efd !important;
 }
 
 a.text-primary:focus, a.text-primary:hover {
@@ -3480,8 +3481,8 @@ pre code {
 }
 
 .card .list-group-item {
-  background: #2d3035;
-  border-color: #34373d;
+  background: #007bff;
+  border-color: #0d6efd;
 }
 
 

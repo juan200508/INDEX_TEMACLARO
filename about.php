@@ -130,7 +130,7 @@
             </div>
             <div class="text">
               <h2 class="text-uppercase">ENVÍO GRATIS</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
+              <p></p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
@@ -139,7 +139,7 @@
             </div>
             <div class="text">
               <h2 class="text-uppercase">DEVOLUCIONES GRATIS</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
+              <p></p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="200">
@@ -148,7 +148,7 @@
             </div>
             <div class="text">
               <h2 class="text-uppercase">ATENCIÓN AL CLIENTE</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
+              <p></p>
             </div>
           </div>
         </div>

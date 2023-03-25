@@ -19,8 +19,9 @@ include '../conexion.php';
                         <tr>
                             <th>ID</th>
                             <th>NOMBRE</th>
+                            <th>IMAGEN</th>
                             <th>PRODUCTO</th>
-                            <th>N° GUÍA</th>
+                            <th>PRECIO</th>
                             <th>ESTADO</th>
                             <th>ACCIONES</th>
                         </tr>
@@ -40,16 +41,9 @@ include '../conexion.php';
                                 <tr>
                                     <td><?php echo $data['id']; ?></td>
                                     <td><?php echo $data['nombre']; ?></td>
+                                    <td><img style="width: 100px;" src="data:img/jpg;base64, <?php echo base64_encode($data['imagen']) ?>" alt=""></td>
                                     <td><?php echo $data['descripcion']; ?></td>
-                                    <td>
-                                        <?php
-                                        if ( empty($data['n_guia'])){
-                                            echo '<span style="color: red">' . "El pedido no se ha enviado" . '</span>';
-                                        }else{
-                                            echo '<span style="color: green">' . $data['n_guia'] . '</span>';
-                                        } 
-                                         ?>
-                                    </td>
+                                    <td>$<?php echo $data['total_precio']; ?></td>
                                     <td><?php
                                         if ($data['estado'] == 'Pendiente') {
                                             echo '<span style="color: red">' . $data['estado'] . '</span>';

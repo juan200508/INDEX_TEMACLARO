@@ -67,10 +67,10 @@ mysqli_close($conexion);
                     </div>
                     <div class="form-group">
                         <label for="telefono">TELÉFONO</label>
-                        <input type="number" placeholder="Ingrese teléfono" name="telefono" id="telefono" class="form-control">
+                        <input type="texts" placeholder="Ingrese teléfono" name="telefono" id="telefono" class="form-control" minlength="10" maxlength="10">
                     </div>
                     <div class="form-group">
-                        <label for="direccion">DIRECIÓN</label>
+                        <label for="direccion">DIRECCIÓN</label>
                         <input type="text" placeholder="Ingrese Direccion" name="direccion" id="direcion" class="form-control">
                     </div>
                     <input type="submit" value="Guardar Proveedor" class="btn btn-primary">

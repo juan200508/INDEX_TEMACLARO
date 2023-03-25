@@ -1,5 +1,25 @@
-body.Darkmode{
-    background-color: #050506;
-    color: white;
-    
-    }
+* {
+    relleno: 0;
+    margen: 0;
+    tamaño de caja: caja de borde;
+}
+
+.midiv {
+    posición: absoluta;
+    ancho: 100vw;
+    altura: 100vh;
+    pantalla: flexible;
+    justificar-contenido: centro;
+    alinear elementos: centro;
+    tamaño de fuente: 45px;
+    fuente-peso: negrita;
+    fondo: gradiente lineal (150 grados, #fff102, #f10271, #00c298);
+    tamaño de fondo: 400% 300%;
+    animación: BgGradient 5s facilidad infinita;
+}
+
+@keyframesBgGradiente {
+    0% {posición de fondo: 0% 50%;}
+    50% {posición de fondo: 100% 50%;}
+    100% {posición de fondo: 0% 50%;}
+}

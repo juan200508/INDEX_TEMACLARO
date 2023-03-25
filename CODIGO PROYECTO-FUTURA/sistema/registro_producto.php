@@ -51,11 +51,11 @@
              <?php echo isset($alert) ? $alert : ''; ?>
              <div class="form-group">
                <label for="codigo">Código de Barras</label>
-               <input type="text" placeholder="Ingrese código de barras" name="codigo" id="codigo" class="form-control">
+               <input type="text" placeholder="Ingrese código de barras" name="codigo" id="codigo" class="form-control" required>
              </div>
              <div class="form-group">
                <label for="imagen">Imagen</label>
-               <input type="file" name="imagen" class="form-control">
+               <input type="file" name="imagen" class="form-control" required>
              </div>
              <div class="form-group">
                <label>Proveedor</label>
@@ -80,15 +80,15 @@
              </div>
              <div class="form-group">
                <label for="producto">Producto</label>
-               <input type="text" placeholder="Ingrese nombre del producto" name="producto" id="producto" class="form-control">
+               <input type="text" placeholder="Ingrese nombre del producto" name="producto" id="producto" class="form-control" required>
              </div>
              <div class="form-group">
                <label for="precio">Precio</label>
-               <input type="text" placeholder="Ingrese precio" class="form-control" name="precio" id="precio">
+               <input type="number" placeholder="Ingrese precio" class="form-control" name="precio" id="precio" required>
              </div>
              <div class="form-group">
                <label for="cantidad">Cantidad</label>
-               <input type="number" placeholder="Ingrese cantidad" class="form-control" name="cantidad" id="cantidad">
+               <input type="number" placeholder="Ingrese cantidad" class="form-control" name="cantidad" id="cantidad" required>
              </div>
              <input type="submit" value="Guardar Producto" class="btn btn-primary">
            </form>

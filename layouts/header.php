@@ -19,7 +19,7 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="SISTEMA COMPLETO/sistema/index.php"><span class="icon icon-person"></span></a></li>
+                  <li><a href="CODIGO PROYECTO-FUTURA/sistema/index.php"><span class="icon icon-person"></span>Inicio de Sesión</a></li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                 
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
@@ -34,7 +34,7 @@
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li>
-              <a href="index_usuario.php">Hogar</a>
+              <a href="index.php">Hogar</a>
             
             </li>
             <li>
@@ -42,7 +42,6 @@
             
             </li>
           
-            <li><a href="#">Catálogo</a></li>
             <li><a href="contact.php">Contacto</a></li>
           </ul>
         </div>

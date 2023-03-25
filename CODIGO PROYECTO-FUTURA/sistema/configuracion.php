@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Teléfono:</label>
-                                <input type="number" name="txtTelEmpresa" class="form-control" value="<?php echo $telEmpresa; ?>" id="txtTelEmpresa" placeholder="teléfono de la Empresa" required>
+                                <input type="text" name="txtTelEmpresa" class="form-control" value="<?php echo $telEmpresa; ?>" id="txtTelEmpresa" placeholder="teléfono de la Empresa" required minlength="10" maxlength="10">
                             </div>
                             <div class="form-group">
                                 <label>Correo Electrónico:</label>

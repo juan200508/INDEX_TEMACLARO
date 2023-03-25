@@ -17,7 +17,7 @@
 					<thead class="thead-dark">
 						<tr>
 							<th>ID</th>
-							<th>DNI</th>
+							<th>CC</th>
 							<th>NOMBRE</th>
 							<th>E-MAIL</th>
 							<th>TELEFONO</th>

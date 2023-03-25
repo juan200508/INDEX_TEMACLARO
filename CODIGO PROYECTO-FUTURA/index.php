@@ -1,3 +1,5 @@
+
+
 <?php
 $alert = '';
 session_start();
@@ -60,11 +62,10 @@ if (!empty($_SESSION['active'])) {
   <meta name="author" content="">
 
   <title>FUTURA</title>
-
+  
   <!-- Custom fonts for this template-->
   <link rel="stylesheet" href="sistema/vendor/bootstrap/css/bootstrap.min.css">
-  <!-- Custom styles for this template-->
-  <link href="sistema/css/style.violet.css" rel="stylesheet">
+
 
 </head>
 
@@ -86,6 +87,7 @@ if (!empty($_SESSION['active'])) {
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
+
                     <h1 class="h4 text-gray-900 mb-4">Inicio de Sesión</h1>
                   </div>
                   <form class="user" method="POST">
@@ -99,13 +101,13 @@ if (!empty($_SESSION['active'])) {
                       <input type="password" class="form-control" placeholder="Contraseña" name="clave">
                     </div>
                     <input type="submit" value="Iniciar Sesión" class="btn btn-primary">
+                    <a href="../sistema/../index.php"  class="btn btn-primary">Regresar</a>
+
                     <hr>
                   </form>
-                  <a href="sistema/registrarse.php" style="padding-right: 80px;">Registrarse</a>
+                  <a href="sistema/registrarse.php"  style="padding-right: 50px;">Registrarse</a>
                   <a href="sistema/recuperar_pass.php">¿Olvidó su contraseña?</a>
-                  <hr>
-                  <a href="../sistema/../index.php">Regresar</a>
-                  <hr>
+                  
                 </div>
               </div>
             </div>

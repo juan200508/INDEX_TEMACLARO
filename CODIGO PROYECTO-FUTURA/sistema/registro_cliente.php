@@ -65,27 +65,31 @@ if (!empty($_POST)) {
                         <?php echo isset($alert) ? $alert : ''; ?>
                         <div class="form-group">
                             <label for="dni">Cédula</label>
-                            <input type="number" placeholder="Ingrese Cédula" name="dni" id="dni" class="form-control">
+   
+                            <input type="text"placeholder="Ingrese Cédula" name="dni" id="dni" class="form-control" required minlength="6" maxlength="12">
+                            
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" placeholder="Ingrese Nombre" name="nombre" id="nombre" class="form-control">
+                            <input type="text" placeholder="Ingrese Nombre" name="nombre" id="nombre" class="form-control" required>
+                            <abbr title="TEXTO EMERGENTE QUE SE MOSTRARÁ AL PASAR EL CURSOR"></abbr>
+
                         </div>
                         <div class="form-group">
                             <label for="nombre">E-mail</label>
-                            <input type="text" placeholder="Ingrese Correo Electrónico" name="email" id="email" class="form-control">
+                            <input type="email" placeholder="Ingrese Correo Electrónico" name="email" id="email" class="form-control"required>
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono</label>
-                            <input type="number" placeholder="Ingrese Teléfono" name="telefono" id="telefono" class="form-control">
+                            <input type="text" placeholder="Ingrese Teléfono" name="telefono" id="telefono" class="form-control" required minlength="10" maxlength="10">
                         </div>
                         <div class="form-group">
                             <label for="direccion">Dirección</label>
-                            <input type="text" placeholder="Ingrese Direccion" name="direccion" id="direccion" class="form-control">
+                            <input type="text" placeholder="Ingrese Direccion" name="direccion" id="direccion" class="form-control"required>
                         </div>
                         <div class="form-group">
                             <label for="direccion">Contraseña</label>
-                            <input type="password" placeholder="Ingrese Contraseña" name="contraseña" id="contraseña" class="form-control">
+                            <input type="password" placeholder="Ingrese Contraseña" name="contraseña" id="contraseña" class="form-control"required>
                         </div>
                         <div class="form-group">
                             <input type="text" name="rol" id="rol" class="form-control" value="3" hidden>

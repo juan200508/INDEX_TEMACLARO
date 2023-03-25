@@ -52,7 +52,6 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <!-- Custom styles for this template-->
-    <link href="css/style.violet.css" rel="stylesheet">
 
 </head>
 
@@ -69,7 +68,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image">
-                                <img src="sistema/img/log.png" class="img-thumbnail">
+                            <img src="sistema/img/logo_empresa.png" class="img-thumbnail">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
@@ -86,7 +85,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
                                             <input type="submit" value="Enviar" class="btn btn-primary">
                                             <hr>
                                     </form>
-                                    <a href="../index.php">Inicio de Sesión</a>
+                                    <a href="../index.php" style="padding-right: 50px;">Inicio de Sesión</a>
                                     <a href="registrarse.php">Registrarse</a>
                                     <hr>
                                 </div>
