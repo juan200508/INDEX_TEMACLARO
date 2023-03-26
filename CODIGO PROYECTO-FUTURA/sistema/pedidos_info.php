@@ -3,20 +3,24 @@ include '../conexion.php';
 
 //Actualizar los datos del pedido
 if (!empty($_POST)) {
-    $alert = "";
-    $id = $_GET['id'];
-    $estado = $_POST['estado'];
-    $n_guia = $_POST['n_guia'];
-
-    $query_update = mysqli_query($conexion, "UPDATE datos_pedido SET estado = '$estado', n_guia = '$n_guia' WHERE id = '$id'");
-    if ($query_update) {
-        $alert = '<div class="alert alert-primary" role="alert">
-                        Cambio realizado exitosamente
-                    </div>';
+    if (empty($_POST['estado'] || empty($_POST['n_guia']))) {
+        $alert = '<div class="alert alert-danger" role="alert">Todo los campos son requeridos</div>';
     } else {
-        $alert = '<div class="alert alert-primary" role="alert">
-                         Error al Modificar
-                     </div>';
+        $alert = "";
+        $id = $_GET['id'];
+        $estado = $_POST['estado'];
+        $n_guia = $_POST['n_guia'];
+
+        $query_update = mysqli_query($conexion, "UPDATE datos_pedido SET estado = '$estado', n_guia = '$n_guia' WHERE id = '$id'");
+        if ($query_update) {
+            $alert = '<div class="alert alert-primary" role="alert">
+                            Cambio realizado exitosamente
+                        </div>';
+        } else {
+            $alert = '<div class="alert alert-primary" role="alert">
+                             Error al Modificar
+                         </div>';
+        }
     }
 }
 
@@ -52,7 +56,7 @@ if (empty($_REQUEST['id'])) {
 
 <form action="" method="POST" class="form">
     <?php echo isset($alert) ? $alert : ''; ?>
-    <div class="card shadow p-3 mb-5 bg-body rounded">
+    <div class="container card shadow p-3 mb-5 bg-body rounded bg-light" style="width: 700px;">
         <div class="d-flex flex-row mb-3 justify-content-center">
             <h2>PEDIDO Nº: <?php echo $data['id']; ?></h2><br>
         </div>
@@ -60,16 +64,12 @@ if (empty($_REQUEST['id'])) {
             <img src="data:img/jpg;base64, <?php echo base64_encode($data['imagen']) ?>" class="card-img-top p-2" alt="" style="width: 300px;">
         </div>
         <div class="card-body">
-
-            <div class="d-flex flex-row mb-3 justify-content-center">
-                <h2>DATOS DEL PEDIDO</h2><br>
-            </div>
             <div class="d-flex flex-row mb-3 justify-content-around">
                 <p style="font-size: 20px;" class="p-2"> <strong>Producto:</strong> <br> <?php echo $data['descripcion'] ?> </p>
                 <p style="font-size: 20px;" class="p-2"> <strong>Cantidad:</strong> <br> <?php echo $data['cantidad'] ?> </p>
                 <p style="font-size: 20px;" class="p-2"> <strong>Precio und:</strong> <br> <?php echo $data['precio'] ?> </p>
                 <p style="font-size: 20px;" class="p-2"> <strong>Precio Total:</strong> <br> <?php echo $data['total_precio'] ?> </p>
-            </div><br><br>
+            </div>
             <div class="d-flex flex-row mb-3 justify-content-around">
                 <div class="p-2">
                     <?php if ($data['estado'] == "Pendiente" || $data['estado'] == "En camino") { ?>
@@ -85,27 +85,35 @@ if (empty($_REQUEST['id'])) {
                     <?php } ?>
                 </div>
                 <div class="p-2">
-                    <label style="font-size: 20px;" for="n_guia" class="form-label"> <strong>Nº de guía</strong> </label><br>
-                    <input class="form-control" name="n_guia" id="n_guia" type="text" value="<?php echo $data['n_guia'] ?>"><br>
+                    <?php if (empty($data['n_guia'])) { ?>
+                        <label style="font-size: 20px;" for="n_guia" class="form-label"> <strong>Nº de guía</strong> </label><br>
+                        <input class="form-control" name="n_guia" id="n_guia" type="text" value="<?php echo $data['n_guia'] ?>"><br>
+                    <?php } else { ?>
+                        <p style="font-size: 20px;" class="p-2"> <strong>Nº Guía:</strong> <br> <?php echo $data['n_guia'] ?> </p>
+                    <?php } ?>
                 </div>
-                <p style="font-size: 20px;" class="p-2"> <strong>Precio und:</strong> <br> <?php echo $data['fecha'] ?> </p>
-            </div><br><br>
-
-            <div class="d-flex flex-row mb-3 justify-content-center"><br><br>
-                <h2>DATOS DEL CLIENTE</h2>
-            </div>
-            <div class="d-flex flex-row mb-3 justify-content-around">
-                <p style="font-size: 20px;" class="p-2"> <strong>Cliente:</strong> <br> <?php echo $data['nombre'] ?> </p>
-                <p style="font-size: 20px;" class="p-2"> <strong>Cédula:</strong> <br> <?php echo $data['ref_cliente'] ?> </p>
-                <p style="font-size: 20px;" class="p-2"> <strong>Correo:</strong> <br> <?php echo $data['correo'] ?> </p>
-            </div>
-            <div class="d-flex flex-row mb-3 justify-content-around">
-                <p style="font-size: 20px;" class="p-2"> <strong>Dirección:</strong> <br> <?php echo $data['direccion'] ?> </p>
-                <p style="font-size: 20px;" class="p-2"> <strong>Cuidad:</strong> <br> <?php echo $data['ciudad'] ?> </p>
+                <p style="font-size: 20px;" class="p-2"> <strong>Fecha:</strong> <br> <?php echo $data['fecha'] ?> </p>
             </div>
         </div>
-        <button type="submit" class="btn btn-success btn-sm">Enviar</button>
+        <button type="submit" class="btn btn-success btn-sm">Enviar a</button>
     </div>
 </form>
+
+<div class="container card shadow p-3 mb-5 bg-body rounded bg-primary" style="width: 700px;">
+    <div class="d-flex flex-row mb-3 justify-content-center"><br><br>
+        <h2>DATOS DEL CLIENTE</h2>
+    </div>
+    <div class="d-flex flex-row mb-3 justify-content-around">
+        <p style="font-size: 20px;" class="p-2"> <strong>Cliente:</strong> <br> <?php echo $data['nombre'] ?> </p>
+        <p style="font-size: 20px;" class="p-2"> <strong>Cédula:</strong> <br> <?php echo $data['ref_cliente'] ?> </p>
+        <p style="font-size: 20px;" class="p-2"> <strong>Correo:</strong> <br> <?php echo $data['correo'] ?> </p>
+    </div>
+    <div class="d-flex flex-row mb-3 justify-content-around">
+        <p style="font-size: 20px;" class="p-2"> <strong>Dirección:</strong> <br> <?php echo $data['direccion'] ?> </p>
+        <p style="font-size: 20px;" class="p-2"> <strong>Cuidad:</strong> <br> <?php echo $data['ciudad'] ?> </p>
+    </div>
+</div>
+
+
 
 <?php include_once "includes/footer.php" ?>
