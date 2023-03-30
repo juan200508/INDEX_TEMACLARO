@@ -15,17 +15,22 @@ if (!empty($_POST)) {
         $fecha_inicio = $_POST['fecha_inicio'];
         $estado = $_POST['estado'];
         $fecha_modificacion = "00/00/00";
+        $anotaciones = $_POST['anotaciones'];
         $usuario_id = $_SESSION['idUser'];
-
-        $query_insert = mysqli_query($conexion, "INSERT INTO producciones(producto, cantidad, fecha_inicio, estado, fecha_modificacion, usuario_id) VALUES ('$producto', '$cantidad', '$fecha_inicio', '$estado', '$fecha_modificacion', '$usuario_id')");
-        if ($query_insert) {
-            $alert = '<div class="alert alert-success" role="alert">
-                            Producción Registrada
-                    </div>';
+        $hoy = date("Y-m-d");
+        if ($fecha_inicio < $hoy) {
+            $mensaje = "La fecha no debe ser menor a la actual";
         } else {
-            $alert = '<div class="alert alert-danger" role="alert">
-                        Error al registrar la producción
-                    </div>';
+            $query_insert = mysqli_query($conexion, "INSERT INTO producciones(producto, cantidad, fecha_inicio, estado, fecha_modificacion, anotaciones, usuario_id) VALUES ('$producto', '$cantidad', '$fecha_inicio', '$estado', '$fecha_modificacion', '$anotaciones', '$usuario_id')");
+            if ($query_insert) {
+                $alert = '<div class="alert alert-success" role="alert">
+                                Producción Registrada
+                        </div>';
+            } else {
+                $alert = '<div class="alert alert-danger" role="alert">
+                            Error al registrar la producción
+                        </div>';
+            }
         }
     }
 }
@@ -79,6 +84,7 @@ if (!empty($_POST)) {
                         <div class="form-group">
                             <label for="precio">Fecha Incio</label>
                             <input type="date" placeholder="Ingrese precio" class="form-control" name="fecha_inicio" id="fecha_inicio">
+                            <span style="color: red;"> <?php echo isset($mensaje) ? $mensaje : ''; ?> </span>
                         </div>
                         <div class="form-group">
                             <label for="cantidad">Estado</label>
@@ -86,6 +92,10 @@ if (!empty($_POST)) {
                                 <option value=""></option>
                                 <option value="Pendiente">Pendiente</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="texto">Anotaciones</label>
+                            <textarea class="form-control" name="anotaciones" id="texto" rows="3"></textarea>
                         </div>
                         <input type="submit" value="Guardar Producto" class="btn btn-primary">
                     </form>

@@ -1,29 +1,6 @@
 <?php
 include_once 'includes/header.php';
 include '../conexion.php';
-if (!empty($_POST)) {
-    $alter = "";
-    if (empty($_POST['estado']) || empty($_POST['fecha_modificacion'])) {
-        $alert = '<div class="alert alert-primary" role="alert">
-        Todo los campos son requeridos
-      </div>';
-    } else {
-        $id = $_GET['id'];
-        $estado = $_POST['estado'];
-        $fecha_modificacion = $_POST['fecha_modificacion'];
-
-        $query_update = mysqli_query($conexion, "UPDATE producciones SET estado = '$estado', fecha_modificacion = '$fecha_modificacion' WHERE id = $id");
-        if ($query_update) {
-            $alert = '<div class="alert alert-primary" role="alert">
-                            Cambio realizado exitosamente
-                    </div>';
-        } else {
-            $alert = '<div class="alert alert-primary" role="alert">
-                            Error al Modificar
-                    </div>';
-        }
-    }
-}
 
 //Validar producción
 if (empty($_REQUEST['id'])) {
@@ -33,7 +10,7 @@ if (empty($_REQUEST['id'])) {
     if (!is_numeric($id_produccion)) {
         header("location: lista_producciones.php");
     }
-    $query_produccion = mysqli_query($conexion, "SELECT p.id, pr.descripcion, p.cantidad, p.fecha_inicio, p.estado, p.fecha_modificacion FROM producciones p INNER JOIN producto pr ON p.producto = pr.codproducto WHERE id = $id_produccion");
+    $query_produccion = mysqli_query($conexion, "SELECT p.id, p.producto, pr.descripcion, p.cantidad, p.fecha_inicio, p.estado, p.fecha_modificacion, p.anotaciones, p.fecha_terminacion FROM producciones p INNER JOIN producto pr ON p.producto = pr.codproducto WHERE id = $id_produccion");
     $result_produccion = mysqli_num_rows($query_produccion);
 
     if ($result_produccion > 0) {
@@ -42,6 +19,39 @@ if (empty($_REQUEST['id'])) {
         header("location: lista_produccion.php");
     }
 }
+
+if (!empty($_POST)) {
+    $alter = "";
+    if (empty($_POST['estado']) || empty($_POST['fecha_terminacion'])) {
+        $alert = '<div class="alert alert-primary" role="alert">
+        Todo los campos son requeridos
+      </div>';
+    } else {
+        $id = $_GET['id'];
+        $estado = $_POST['estado'];
+        $fecha_modificaion = $data_produccion['fecha_modificacion'];
+        $fecha_terminacion = $_POST['fecha_terminacion'];
+        $anotaciones = $_POST['anotaciones'];
+        $hoy = date("Y-m-d");
+        if ($fecha_terminacion < $fecha_modificaion) {
+            $mensaje = "La fecha no debe ser menor a la actual";
+        } else {
+            $query_update = mysqli_query($conexion, "UPDATE producciones SET estado = '$estado', fecha_terminacion = '$fecha_terminacion', anotaciones = '$anotaciones' WHERE id = $id");
+            if ($query_update) {
+                $alert = '<div class="alert alert-primary" role="alert">
+                                Cambio realizado exitosamente
+                        </div>';
+            } else {
+                $alert = '<div class="alert alert-primary" role="alert">
+                                Error al Modificar
+                        </div>';
+            }
+        }
+    }
+}
+
+
+
 ?>
 
 <!-- Begin Page Content -->
@@ -58,7 +68,7 @@ if (empty($_REQUEST['id'])) {
         <div class="col-lg-6 m-auto">
             <div class="card">
                 <div class="card-header bg-primary">
-                    Editar Producción
+                    Terminar Producción
                 </div>
                 <div class="card-body">
                     <form action="" method="post" autocomplete="off">
@@ -83,8 +93,17 @@ if (empty($_REQUEST['id'])) {
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="texto">Anotaciones</label>
+                            <textarea class="form-control" name="anotaciones" id="texto" rows="3"><?php echo $data_produccion['anotaciones'] ?></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="precio">Fecha Modificación</label>
-                            <input type="date" placeholder="Ingrese precio" class="form-control" name="fecha_modificacion" id="fecha_modificacion" value="<?php echo $data_produccion['fecha_modificacion']; ?>">
+                            <input type="date" class="form-control" name="fecha_modificacion" id="fecha_modificacion" value="<?php echo $data_produccion['fecha_modificacion']; ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Fecha Finalización</label>
+                            <input type="date" placeholder="Ingrese precio" class="form-control" name="fecha_terminacion" id="fecha_terminacion" value="">
+                            <span style="color: red;"> <?php echo isset($mensaje) ? $mensaje : ''; ?> </span>
                         </div>
                         <input type="submit" value="Guardar Producto" class="btn btn-primary">
                     </form>

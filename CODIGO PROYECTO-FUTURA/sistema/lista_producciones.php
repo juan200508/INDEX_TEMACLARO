@@ -30,7 +30,7 @@
                     <tbody>
                         <?php
                         include "../conexion.php";
-                        $query = mysqli_query($conexion, "SELECT p.id, pr.descripcion, p.cantidad, p.fecha_inicio, p.estado, p.fecha_modificacion FROM producciones p INNER JOIN producto pr ON p.producto = pr.codproducto");
+                        $query = mysqli_query($conexion, "SELECT p.id, pr.descripcion, p.cantidad, p.fecha_inicio, p.estado, p.fecha_modificacion, p.fecha_terminacion FROM producciones p INNER JOIN producto pr ON p.producto = pr.codproducto");
                         $result = mysqli_num_rows($query);
                         if ($result > 0) {
                             while ($data = mysqli_fetch_assoc($query)) { ?>
@@ -42,22 +42,26 @@
                                     <td><?php
                                         if ($data['estado'] == 'Pendiente') {
                                             echo '<span style="color: red">' . $data['estado'] . '</span>';
+                                        } else if ($data['estado'] == 'En proceso') {
+                                            echo '<span style="color: blue">' . $data['estado'] . '</span>';
                                         } else {
                                             echo '<span style="color: green">' . $data['estado'] . '</span>';
                                         }
                                         ?>
                                     </td>
-                                    <td><?php echo $data['fecha_modificacion']; ?></td>
+                                    <td><?php echo $data['fecha_terminacion']; ?></td>
                                     <?php if ($_SESSION['rol'] == 1) { ?>
                                         <td>
-                                            <?php if ($data['estado'] == "Pendiente") { ?>
+                                            <?php if ($data['estado'] != "Terminado") { ?>
                                                 <a href="editar_estado_pro.php?id=<?php echo $data['id']; ?>" class="btn btn-primary btn-sm"><i class='fas fa-audio-description'></i></a>
                                                 <a href="editar_produccion.php?id=<?php echo $data['id']; ?>" class="btn btn-info btn-sm"><i class='fas fa-edit'></i></a>
                                                 <form action="eliminar_produccion.php?id=<?php echo $data['id']; ?>" method="post" class="confirmar d-inline">
                                                     <button class="btn btn-danger btn-sm" type="submit"><i class='fas fa-trash-alt'></i></button>
                                                 </form>
                                             <?php } else { ?>
-                                                <span style="color: red;">No hay acciones disponibles</span>
+
+                                                <a href="produccion_info.php?id=<?php echo $data['id']; ?>" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+
                                             <?php } ?>
                                         </td>
                                     <?php } ?>
